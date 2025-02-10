@@ -1,3 +1,4 @@
+
 let expenseChart;
 
 const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
@@ -109,8 +110,8 @@ modal.addEventListener('click', (e) => {
 
 async function fetchExchangeRates() {
     try {
-        const response = await fetch(${BASE_URL}/latest?apikey=${API_KEY}&base_currency=USD);
-        if (!response.ok) throw new Error(HTTP error! status: ${response.status});
+        const response = await fetch(`${BASE_URL}/latest?apikey=${API_KEY}&base_currency=USD`);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const data = await response.json();
         if (data && data.data) {
