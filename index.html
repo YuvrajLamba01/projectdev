@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Expense Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="app-container">
+  <header class="header">
+    <div class="header-content">
+      <h1>Finance Tracker</h1>
+      <button id="shareButton" class="share-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+          <polyline points="16 6 12 2 8 6"/>
+          <line x1="12" y1="2" x2="12" y2="15"/>
+        </svg>
+        Share Report
+      </button>
+    </div>
+
+    <div class="balance-cards">
+      <div class="balance-card total">
+        <h3>Total Balance</h3>
+        <p id="balance">$0.00</p>
+      </div>
+      <div class="balance-card income">
+        <h3>Income</h3>
+        <p id="income">$0.00</p>
+      </div>
+      <div class="balance-card expense">
+        <h3>Expense</h3>
+        <p id="expense">$0.00</p>
+      </div>
+    </div>
+
+    <div class="currency-container">
+      <select id="currencySelect" class="currency-select">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <option value="JPY">JPY</option>
+        <option value="AUD">AUD</option>
+        <option value="CAD">CAD</option>
+        <option value="CHF">CHF</option>
+        <option value="CNY">CNY</option>
+        <option value="INR">INR</option>
+      </select>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="chart-container">
+      <canvas id="expenseChart"></canvas>
+    </div>
+
+    <div class="transactions-section">
+      <div class="section-header">
+        <h2>Recent Transactions</h2>
+        <button id="addTransactionBtn" class="add-transaction-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          Add Transaction
+        </button>
+      </div>
+
+      <ul id="transactionList" class="transaction-list" data-placeholder="No transactions yet"></ul>
+    </div>
+  </main>
+
+  <div id="transactionModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Add Transaction</h2>
+        <button class="close-modal">&times;</button>
+      </div>
+      <form id="transactionForm">
+        <div class="form-group">
+          <label for="type">Transaction Type</label>
+          <div class="toggle-switch">
+            <input type="checkbox" id="type" name="type" checked>
+            <label for="type" class="toggle-label">
+              <span class="toggle-income">Income</span>
+              <span class="toggle-expense">Expense</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Description</label>
+          <input type="text" id="name" name="name" required placeholder="Enter description">
+        </div>
+
+        <div class="form-group">
+          <label for="amount">Amount</label>
+          <input type="number" id="amount" name="amount" required min="0" step="0.01" placeholder="Enter amount">
+        </div>
+
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+
+        <button type="submit" class="submit-btn">Add Transaction</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
